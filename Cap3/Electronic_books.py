@@ -1,29 +1,11 @@
-import nltk
-from bs4 import BeautifulSoup
+from __future__ import division
+import nltk, re, pprint
 
-f = open('e961024.htm', encoding = 'utf-8')
-text_string = f.read()
-f.close()
-# print(type(text))
-# print(len(text))
-# print(text[:1000])
-# tokens = nltk.word_tokenize(text_string)
-# text = nltk.Text(tokens)
+from urllib.request import urlopen
+url = "http://www.gutenberg.org/files/30648/30648-h/30648-h.htm"
+with urlopen(url) as res:
+    raw = res.read()
 
-# print(text[:100])
-
-# print(text.concordance('actividad'))
-# print(text.similar('actividad'))
-
-soup = BeautifulSoup(text_string, 'lxml')
-text_string = soup.get_text()
-
-print(type(text_string))
-print(len(text_string))
-
-words = nltk.word_tokenize(text_string)
-
-print(type(words))
-print(len(words))
-print(words[:200])
-
+print(type(raw))
+print(len(raw))
+print(raw[:75])
